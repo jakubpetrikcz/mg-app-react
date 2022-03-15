@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "mg-app-react",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

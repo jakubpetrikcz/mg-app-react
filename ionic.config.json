@@ -1,0 +1,7 @@
+{
+  "name": "mg-app-react",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
