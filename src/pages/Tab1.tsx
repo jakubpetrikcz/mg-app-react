@@ -8,6 +8,7 @@ import {
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import HeaderComponent from "../components/Header/HeaderComponent";
+import SliderComponent from "../components/Slider/SliderComponent";
 import "./Tab1.scss";
 
 const Tab1: React.FC = () => {
@@ -19,12 +20,8 @@ const Tab1: React.FC = () => {
         showSearchBar={false}
       />
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonIcon src="home" size="large"></IonIcon>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <SliderComponent title="Trends" />
+        <SliderComponent title="Top Rated" />
       </IonContent>
     </IonPage>
   );

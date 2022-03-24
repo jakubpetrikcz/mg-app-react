@@ -2,7 +2,7 @@ ion-header {
   ion-list {
     background: var(--ion-color-primary) !important;
     border-radius: 0 0 15px 15px;
-    padding-bottom: 6vh;
+    padding-bottom: 6vh !important;
 
     ion-item {
       ion-label {

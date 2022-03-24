@@ -1,0 +1,50 @@
+.swiper-slide {
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+ion-card {
+  width: 100%;
+  position: relative;
+  box-shadow: none !important;
+  margin: 0.5rem;
+  overflow: visible;
+
+  img {
+    object-fit: cover;
+    border-radius: 12px;
+    width: 100%;
+    transition: 600ms all ease-in-out;
+  }
+
+  h4 {
+    margin: 0.5rem;
+    margin-top: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #495057;
+  }
+}
+
+// .swiper-slide {
+//   transition: 400ms all ease-in-out;
+//   position: relative;
+// }
+
+// .swiper-slide-active {
+//   transform: scale(1.05, 1.05);
+
+//   ion-card {
+//     img {
+//       transform: scale(1, 1);
+//     }
+//   }
+// }
