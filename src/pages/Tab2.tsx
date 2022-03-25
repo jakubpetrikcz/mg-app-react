@@ -1,8 +1,12 @@
 import {
+  IonCol,
   IonContent,
+  IonGrid,
   IonHeader,
   IonIcon,
+  IonList,
   IonPage,
+  IonRow,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -15,12 +19,30 @@ const Tab2: React.FC = () => {
     <IonPage>
       <HeaderComponent name="Search" showBtn={false} showSearchBar={true} />
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonIcon src="home" size="large"></IonIcon>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonList>
+          <div>
+            <IonGrid>
+              <IonRow>
+                <IonCol size-lg="2" size-md="4" size-sm="6" size-xs="6">
+                  <div className="card">
+                    <div className="card-content">
+                      <img src="../../assets/avatar-movie.jpg" alt="avatar" />
+                      <h4>Ahoj</h4>
+                    </div>
+                  </div>
+                </IonCol>
+                <IonCol size-lg="2" size-md="4" size-sm="6" size-xs="6">
+                  <div className="card">
+                    <div className="card-content">
+                      <img src="../../assets/avatar-movie.jpg" alt="avatar" />
+                      <h4>Ahoj</h4>
+                    </div>
+                  </div>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </div>
+        </IonList>
       </IonContent>
     </IonPage>
   );

@@ -1,0 +1,42 @@
+.card {
+  .card-content {
+    position: relative;
+
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: -15px;
+      background: transparent;
+      color: #ffbe0b;
+
+      i {
+        font-size: 2rem;
+      }
+
+      span {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 0.8rem;
+      }
+    }
+
+    img {
+      object-fit: cover;
+      border-radius: 12px;
+      width: 100%;
+      transition: 600ms all ease-in-out;
+    }
+
+    h4 {
+      margin: 0.5rem;
+      margin-top: 0;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #495057;
+      text-align: center;
+    }
+  }
+}

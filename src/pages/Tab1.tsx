@@ -20,8 +20,8 @@ const Tab1: React.FC = () => {
         showSearchBar={false}
       />
       <IonContent fullscreen>
-        <SliderComponent title="Trends" />
-        <SliderComponent title="Top Rated" />
+        <SliderComponent title="Trends" isTrend={true} />
+        <SliderComponent title="Top Rated" isTrend={false} />
       </IonContent>
     </IonPage>
   );

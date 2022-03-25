@@ -1,13 +1,13 @@
-ion-header {
+.header {
   ion-list {
-    background: var(--ion-color-primary) !important;
+    background: var(--ion-color-primary);
     border-radius: 0 0 15px 15px;
-    padding-bottom: 6vh !important;
+    padding-bottom: 6vh;
 
     ion-item {
-      ion-label {
+      .page-title {
         font-weight: bold;
-        font-size: 1.2rem !important;
+        font-size: 1.2rem;
         letter-spacing: 0.5px;
       }
     }
@@ -22,6 +22,14 @@ ion-header {
       margin-top: -30px;
       --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+
+    ion-searchbar {
+      text-align: start;
+      --border-radius: 20px;
+      margin-top: -30px;
+      --background: white;
+      --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
   }
 
   .generate-btn {
@@ -29,6 +37,7 @@ ion-header {
     width: 120px;
     height: 3.125rem;
     font-size: 1.2rem;
+    color: white;
     --background: #ff002b;
   }
 }

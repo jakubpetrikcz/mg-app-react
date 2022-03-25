@@ -26,15 +26,15 @@ const HeaderComponent: React.FC<ContainerProps> = ({
   showSearchBar = true,
 }) => {
   return (
-    <IonHeader class="ion-no-border">
-      <IonList lines="none" class="ion-padding-top">
+    <IonHeader className="ion-no-border header">
+      <IonList no-lines className="ion-padding-top">
         <IonItem color="primary">
-          <IonLabel>{name}</IonLabel>
+          <IonLabel className="page-title">{name}</IonLabel>
         </IonItem>
       </IonList>
       <div className="popover">
         {showBtn ? (
-          <IonButton id="trigger-button" class="generate-btn">
+          <IonButton id="trigger-button" className="generate-btn">
             <span className="font-span">Generate</span>
           </IonButton>
         ) : null}
