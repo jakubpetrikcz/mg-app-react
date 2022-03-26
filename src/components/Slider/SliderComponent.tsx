@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "./SliderComponent.scss";
 import { getTopRatedList, getTrendingList } from "../../services/ApiConnect";
+import MovieCardComponent from "../MovieCard/MovieCardComponent";
 
 interface ContainerProps {
   title: string;
@@ -47,24 +48,20 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
           ? listItems.map((item: any, i: number) => {
               return (
                 <SwiperSlide key={i}>
-                  <IonCard>
-                    <div>
-                      <img src="../../assets/avatar-movie.jpg" alt="avatar" />
-                      <h4>{item.title}</h4>
-                    </div>
-                  </IonCard>
+                  <MovieCardComponent
+                    title={item.title}
+                    imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                  />
                 </SwiperSlide>
               );
             })
           : listTop.map((item: any, i: number) => {
               return (
                 <SwiperSlide key={i}>
-                  <IonCard>
-                    <div>
-                      <img src="../../assets/avatar-movie.jpg" alt="avatar" />
-                      <h4>{item.title}</h4>
-                    </div>
-                  </IonCard>
+                  <MovieCardComponent
+                    title={item.title}
+                    imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                  />
                 </SwiperSlide>
               );
             })}
