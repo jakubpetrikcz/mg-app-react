@@ -6,7 +6,6 @@ import {
   IonToolbar,
   IonIcon,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import SliderComponent from "../components/Slider/SliderComponent";
 import "./Tab1.scss";

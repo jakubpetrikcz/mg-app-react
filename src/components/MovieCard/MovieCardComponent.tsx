@@ -12,6 +12,7 @@ import {
   IonButton,
   IonSearchbar,
   IonCard,
+  IonRouterLink,
 } from "@ionic/react";
 import "./MovieCardComponent.scss";
 
@@ -23,10 +24,10 @@ interface ContainerProps {
 const MovieCardComponent: React.FC<ContainerProps> = ({ title, imgSrc }) => {
   return (
     <IonCard>
-      <div>
+      <IonRouterLink routerLink="/tab2">
         <img src={imgSrc} alt="avatar" />
         <h4>{title}</h4>
-      </div>
+      </IonRouterLink>
     </IonCard>
   );
 };

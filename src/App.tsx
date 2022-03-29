@@ -15,6 +15,7 @@ import {
   ellipse,
   home,
   homeOutline,
+  homeSharp,
   searchOutline,
   square,
   triangle,
@@ -41,41 +42,70 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.scss";
+import { useState } from "react";
+import { pages } from "./pages";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={homeOutline} />
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={searchOutline} />
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={bookmarkOutline} />
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const [selectedTab, setSelectedTab] = useState<any>("tab0");
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs onIonTabsWillChange={(e) => setSelectedTab(e.detail.tab)}>
+          <IonRouterOutlet>
+            {pages.map((page, index) => {
+              return (
+                <Route
+                  path={page.path}
+                  component={page.component}
+                  key={index}
+                />
+              );
+            })}
+            <Route exact path="/">
+              <Redirect to={pages.filter((page) => page.redirect)[0].path} />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar
+            style={{
+              backgroundColor: "#495057",
+              borderRadius: "15px 15px 0 0",
+              border: "unset",
+              width: "100%",
+              margin: "0 auto",
+              maxHeight: "56px",
+              height: "56px",
+            }}
+            slot="bottom"
+          >
+            {pages.map((page, index) => {
+              const isSelected = selectedTab === `tab${index}`;
+              return (
+                <IonTabButton
+                  style={{
+                    color: "white",
+                    colorSelected: "white",
+                    backgroundColor: "#495057",
+                    borderRadius: "15px 15px 0 0",
+                  }}
+                  tab={`tab${index}`}
+                  href={page.path}
+                  key={index}
+                >
+                  <IonIcon
+                    style={{ fontSize: "1.4rem" }}
+                    icon={isSelected ? page.selectedIcon : page.icon}
+                  />
+                </IonTabButton>
+              );
+            })}
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
