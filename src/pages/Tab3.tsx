@@ -45,6 +45,7 @@ const Tab3: React.FC = () => {
                       <MovieCardComponent
                         title={item.title}
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                        router={item.id}
                         isAddBtn={false}
                         isRatingBtn={false}
                         isRemoveBtn={true}

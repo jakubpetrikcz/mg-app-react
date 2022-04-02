@@ -21,6 +21,7 @@ import { add, bookmark, bookmarkSharp, star, trash } from "ionicons/icons";
 interface ContainerProps {
   title: string;
   imgSrc: string;
+  router: string;
   isAddBtn: boolean;
   isRatingBtn: boolean;
   isRemoveBtn: boolean;
@@ -29,34 +30,31 @@ interface ContainerProps {
 const MovieCardComponent: React.FC<ContainerProps> = ({
   title,
   imgSrc,
+  router,
   isAddBtn,
   isRatingBtn,
   isRemoveBtn,
 }) => {
   return (
     <IonCard>
-      <IonRouterLink routerLink="/tab2">
-        {isAddBtn ? (
-          <IonButton fill="clear">
-            <IonIcon
-              slot="icon-only"
-              class="bookmark"
-              icon={bookmark}
-            ></IonIcon>
-            <IonIcon class="add" icon={add}></IonIcon>
-          </IonButton>
-        ) : null}
-        {isRatingBtn ? (
-          <IonBadge class="badge">
-            <span>5.5</span>
-            <i className="fas fa-star"></i>
-          </IonBadge>
-        ) : null}
-        {isRemoveBtn ? (
-          <IonButton fill="clear" className="remove-btn">
-            <IonIcon slot="icon-only" icon={trash}></IonIcon>
-          </IonButton>
-        ) : null}
+      {isAddBtn ? (
+        <IonButton fill="clear">
+          <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
+          <IonIcon class="add" icon={add}></IonIcon>
+        </IonButton>
+      ) : null}
+      {isRatingBtn ? (
+        <IonBadge class="badge">
+          <span>5.5</span>
+          <i className="fas fa-star"></i>
+        </IonBadge>
+      ) : null}
+      {isRemoveBtn ? (
+        <IonButton fill="clear" className="remove-btn">
+          <IonIcon slot="icon-only" icon={trash}></IonIcon>
+        </IonButton>
+      ) : null}
+      <IonRouterLink routerLink={router}>
         <img src={imgSrc} alt="avatar" />
         <h4>{title}</h4>
       </IonRouterLink>
