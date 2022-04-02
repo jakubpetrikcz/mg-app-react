@@ -82,6 +82,7 @@ const App: React.FC = () => {
           >
             {pages.map((page, index) => {
               const isSelected = selectedTab === `tab${index}`;
+              console.log(selectedTab);
               return (
                 <IonTabButton
                   style={{

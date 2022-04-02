@@ -8,6 +8,7 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import HeaderComponent from "../components/Header/HeaderComponent";
+import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
 import { getPopularList } from "../services/ApiConnect";
 import "./Tab2.scss";
 
@@ -37,15 +38,13 @@ const Tab2: React.FC = () => {
                       size-xs="6"
                       key={i}
                     >
-                      <div className="card">
-                        <div className="card-content">
-                          <img
-                            src={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
-                            alt="avatar"
-                          />
-                          <h4>{item.title}</h4>
-                        </div>
-                      </div>
+                      <MovieCardComponent
+                        title={item.title}
+                        imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                        isAddBtn={false}
+                        isRatingBtn={true}
+                        isRemoveBtn={false}
+                      />
                     </IonCol>
                   );
                 })}

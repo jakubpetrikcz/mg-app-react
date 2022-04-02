@@ -28,7 +28,7 @@ const HeaderComponent: React.FC<ContainerProps> = ({
   return (
     <IonHeader className="ion-no-border header">
       <IonList no-lines className="ion-padding-top">
-        <IonItem color="primary">
+        <IonItem color="primary" lines="none">
           <IonLabel className="page-title">{name}</IonLabel>
         </IonItem>
       </IonList>
