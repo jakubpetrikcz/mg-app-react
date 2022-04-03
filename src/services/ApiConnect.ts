@@ -41,3 +41,11 @@ export const getMovieDetailList = (id: string) => {
       return response.data;
     });
 };
+
+export const getCreditsList = (id: string) => {
+  return axios
+    .get(`${apiUrl}/movie/${id}/credits?api_key=${apiKey}&language=en-US`)
+    .then((response) => {
+      return response.data;
+    });
+};

@@ -22,6 +22,7 @@ interface ContainerProps {
   title: string;
   imgSrc: string;
   router: string;
+  voterRating: string;
   isAddBtn: boolean;
   isRatingBtn: boolean;
   isRemoveBtn: boolean;
@@ -31,6 +32,7 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   title,
   imgSrc,
   router,
+  voterRating,
   isAddBtn,
   isRatingBtn,
   isRemoveBtn,
@@ -44,8 +46,8 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
         </IonButton>
       ) : null}
       {isRatingBtn ? (
-        <IonBadge class="badge">
-          <span>5.5</span>
+        <IonBadge class="movie-badge">
+          <span>{voterRating}</span>
           <i className="fas fa-star"></i>
         </IonBadge>
       ) : null}

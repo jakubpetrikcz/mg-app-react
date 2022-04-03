@@ -3,6 +3,7 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
+  IonPage,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -56,24 +57,51 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs onIonTabsWillChange={(e) => setSelectedTab(e.detail.tab)}>
           <IonRouterOutlet>
-            <Switch>
-              {pages.map((page, index) => {
-                console.log(page.redirect);
-                return (
-                  <Route
-                    path={page.path}
-                    component={page.component}
-                    key={index}
-                  />
-                );
-              })}
-              <Route exact path="/">
-                <Redirect to={pages.filter((page) => page.redirect)[0].path} />
-              </Route>
-            </Switch>
+            {/* {pages.map((page, index) => {
+              console.log(page.redirect);
+              return (
+                // <Route
+                //   path={page.path}
+                //   key={index}
+                //   render={({ match: { url } }) => (
+                //     <>
+                //       <Route
+                //         path={`${url}/`}
+                //         component={page.component}
+                //         exact
+                //       />
+                //       <Route path={`${url}/:id`} component={MovieDetailsPage} />
+                //     </>
+                //   )}
+                // />
+                <Route
+                  path={page.path}
+                  component={page.component}
+                  key={index}
+                />
+              );
+            })} */}
+            <Route exact path="/">
+              <Redirect to={pages.filter((page) => page.redirect)[0].path} />
+            </Route>
 
-            <Route path="/tab1/:id" component={MovieDetailsPage} />
-            <Route path="/tab2/:id" component={MovieDetailsPage} />
+            {/* <Route exact path="/">
+              <Redirect to="/tab1" />
+            </Route> */}
+            {/* {/* <Route
+              path="/tab1"
+              render={({ match: { url } }) => (
+                <>
+                  <Route path={`${url}/`} component={Tab1} exact />
+                  <Route path={`${url}/:id`} component={MovieDetailsPage} />
+                </>
+              )}
+            ></Route> */}
+            <Route path="/tab1" component={Tab1} exact />
+            <Route path="/tab2" component={Tab2} exact />
+            <Route path="/tab3" component={Tab3} exact />
+            <Route path="/tab1/:id" component={MovieDetailsPage} exact />
+            <Route path="/tab2/:id" component={MovieDetailsPage} exact />
           </IonRouterOutlet>
           <IonTabBar
             style={{
@@ -90,7 +118,6 @@ const App: React.FC = () => {
             {pages.map((page, index) => {
               if (page.icon) {
                 const isSelected = selectedTab === `tab${index}`;
-                console.log(selectedTab);
                 return (
                   <IonTabButton
                     style={{

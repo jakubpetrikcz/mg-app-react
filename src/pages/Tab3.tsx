@@ -46,6 +46,7 @@ const Tab3: React.FC = () => {
                         title={item.title}
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                         router={item.id}
+                        voterRating={""}
                         isAddBtn={false}
                         isRatingBtn={false}
                         isRemoveBtn={true}

@@ -50,7 +50,7 @@ ion-card {
     }
   }
 
-  .badge {
+  .movie-badge {
     position: absolute;
     top: -12px;
     right: -20px;
@@ -68,7 +68,7 @@ ion-card {
       transform: translate(-50%, -50%);
       color: black;
       font-size: 0.8rem;
-      z-index: 10;
+      z-index: 12;
     }
   }
 

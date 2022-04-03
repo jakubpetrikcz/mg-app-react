@@ -42,6 +42,7 @@ const Tab2: React.FC = () => {
                         title={item.title}
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                         router={"/tab2/" + item.id}
+                        voterRating={item.vote_average}
                         isAddBtn={false}
                         isRatingBtn={true}
                         isRemoveBtn={false}
