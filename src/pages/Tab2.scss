@@ -9,4 +9,8 @@ ion-col {
   font-size: 18px;
   text-align: center;
   box-sizing: border-box;
+
+  .no-margin {
+    margin: 0;
+  }
 }

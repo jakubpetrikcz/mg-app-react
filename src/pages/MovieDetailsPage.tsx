@@ -41,14 +41,14 @@ const MovieDetailsPage: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-    console.log(id);
+    // console.log(id);
     getMovieDetailList(id).then((data) => {
       setItem(data);
-      console.log(data);
+      // console.log(data);
     });
     getCreditsList(id).then((data) => {
       setCredits(data);
-      console.log(data);
+      // console.log(data);
     });
   }, []);
 
@@ -159,7 +159,7 @@ const MovieDetailsPage: React.FC = () => {
                   const directorImage =
                     "https://www.themoviedb.org/t/p/w138_and_h175_face/" +
                     member.profile_path;
-                  console.log(member);
+                  // console.log(member);
                   return (
                     <IonItem key={i}>
                       <IonAvatar slot="start">

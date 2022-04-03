@@ -38,7 +38,7 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   isRemoveBtn,
 }) => {
   return (
-    <IonCard>
+    <IonCard className="no-margin">
       {isAddBtn ? (
         <IonButton fill="clear">
           <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
