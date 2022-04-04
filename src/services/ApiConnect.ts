@@ -49,3 +49,13 @@ export const getCreditsList = (id: string) => {
       return response.data;
     });
 };
+
+export const getDiscoverList = (page: number) => {
+  return axios
+    .get(
+      `${apiUrl}/discover/movie?api_key=${apiKey}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      return response.data;
+    });
+};
