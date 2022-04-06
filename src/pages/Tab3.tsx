@@ -27,7 +27,12 @@ const Tab3: React.FC = () => {
   }, []);
   return (
     <IonPage>
-      <HeaderComponent name="Watchlist" showBtn={false} showSearchBar={false} />
+      <HeaderComponent
+        name="Watchlist"
+        showBtn={false}
+        showSearchBar={false}
+        parentCallback
+      />
       <IonContent fullscreen>
         <IonList>
           <div>

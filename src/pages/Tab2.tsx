@@ -6,7 +6,7 @@ import {
   IonPage,
   IonRow,
 } from "@ionic/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
 import { getPopularList } from "../services/ApiConnect";
@@ -15,15 +15,19 @@ import "./Tab2.scss";
 const Tab2: React.FC = () => {
   const [listPopular, setListPopular] = useState<any>([]);
 
-  useEffect(() => {
-    getPopularList(1).then((data) => {
-      setListPopular(data.results);
-    });
-  }, []);
+  const callback = (item: any) => {
+    // console.log("parent", item);
+    setListPopular(item);
+  };
 
   return (
     <IonPage>
-      <HeaderComponent name="Search" showBtn={false} showSearchBar={true} />
+      <HeaderComponent
+        name="Search"
+        showBtn={false}
+        showSearchBar={true}
+        parentCallback={callback}
+      />
       <IonContent fullscreen>
         <IonList>
           <div>

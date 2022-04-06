@@ -20,6 +20,7 @@ const Tab1: React.FC = () => {
         name="Movie Generator"
         showBtn={true}
         showSearchBar={false}
+        parentCallback
       />
       <IonContent fullscreen>
         <SliderComponent title="Trends" isTrend={true} />
