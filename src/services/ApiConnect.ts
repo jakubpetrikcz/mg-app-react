@@ -26,7 +26,7 @@ export const getPopularList = (page: number) => {
       `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`
     )
     .then((response) => {
-      //console.log(response);
+      // console.log(response.data);
       return response.data;
     });
 };

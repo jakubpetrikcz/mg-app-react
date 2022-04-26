@@ -1,10 +1,7 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   IonContent,
   IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
   IonIcon,
   IonList,
   IonItem,
@@ -16,25 +13,23 @@ import {
   IonRouterLink,
 } from "@ionic/react";
 import "./HeaderComponent.scss";
-import {
-  getDiscoverList,
-  getPopularList,
-  getSearchList,
-} from "../../services/ApiConnect";
+import { getDiscoverList } from "../../services/ApiConnect";
 import { closeOutline } from "ionicons/icons";
 
 interface ContainerProps {
   name: string;
   showBtn: boolean;
   showSearchBar: boolean;
-  parentCallback: any;
+  searchText: string;
+  setSearchText: any;
 }
 
 const HeaderComponent: React.FC<ContainerProps> = ({
   name,
   showBtn = true,
   showSearchBar = true,
-  parentCallback,
+  searchText,
+  setSearchText,
 }) => {
   const [modalMovie, setModalMovie] = useState<any>([]);
   const [showModal, setShowModal] = useState(false);
@@ -48,33 +43,6 @@ const HeaderComponent: React.FC<ContainerProps> = ({
     });
 
     setShowModal(true);
-  };
-
-  const [searchText, setSearchText] = useState("");
-  const [item, setItem] = useState([]);
-
-  useEffect(() => {
-    if (searchText.length !== 0) {
-      // console.log("Ahoj");
-      loadSearchContainer();
-    } else {
-      getPopularMovies();
-    }
-  }, [searchText]);
-
-  const loadSearchContainer = () => {
-    getSearchList(1, searchText).then((data) => {
-      // console.log(data);
-      setItem(data.results);
-      parentCallback(data.results);
-    });
-  };
-
-  const getPopularMovies = () => {
-    getPopularList(1).then((data) => {
-      setItem(data.results);
-      parentCallback(data.results);
-    });
   };
 
   // console.log("item", item);
@@ -129,8 +97,8 @@ const HeaderComponent: React.FC<ContainerProps> = ({
         {showSearchBar ? (
           <IonSearchbar
             value={searchText}
-            onIonChange={(e) => setSearchText(e.detail.value!)}
-            debounce={1000}
+            onIonChange={setSearchText}
+            color="light"
           ></IonSearchbar>
         ) : null}
       </div>

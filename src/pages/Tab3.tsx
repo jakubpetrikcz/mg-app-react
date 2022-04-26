@@ -31,7 +31,8 @@ const Tab3: React.FC = () => {
         name="Watchlist"
         showBtn={false}
         showSearchBar={false}
-        parentCallback
+        searchText={""}
+        setSearchText
       />
       <IonContent fullscreen>
         <IonList>
