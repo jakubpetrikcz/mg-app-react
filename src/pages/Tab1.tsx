@@ -16,13 +16,7 @@ import "./Tab1.scss";
 const Tab1: React.FC = () => {
   return (
     <IonPage>
-      <HeaderComponent
-        name="Movie Generator"
-        showBtn={true}
-        showSearchBar={false}
-        searchText={""}
-        setSearchText
-      />
+      <HeaderComponent name="Movie Generator" showBtn={true} />
       <IonContent fullscreen>
         <SliderComponent title="Trends" isTrend={true} />
         <SliderComponent title="Top Rated" isTrend={false} />

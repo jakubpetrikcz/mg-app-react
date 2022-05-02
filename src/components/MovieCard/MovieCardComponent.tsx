@@ -22,10 +22,10 @@ interface ContainerProps {
   title: string;
   imgSrc: string;
   router: string;
-  voterRating: string;
-  isAddBtn: boolean;
-  isRatingBtn: boolean;
-  isRemoveBtn: boolean;
+  voterRating?: string;
+  isAddBtn?: boolean;
+  isRatingBtn?: boolean;
+  isRemoveBtn?: boolean;
 }
 
 const MovieCardComponent: React.FC<ContainerProps> = ({

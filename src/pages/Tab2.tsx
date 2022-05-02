@@ -92,7 +92,6 @@ const Tab2: React.FC = () => {
     <IonPage>
       <HeaderComponent
         name="Search"
-        showBtn={false}
         showSearchBar={true}
         searchText={searchText}
         setSearchText={segmentChanged}

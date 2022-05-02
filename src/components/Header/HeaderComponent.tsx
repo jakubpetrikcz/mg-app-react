@@ -18,16 +18,16 @@ import { closeOutline } from "ionicons/icons";
 
 interface ContainerProps {
   name: string;
-  showBtn: boolean;
-  showSearchBar: boolean;
-  searchText: string;
-  setSearchText: any;
+  showBtn?: boolean;
+  showSearchBar?: boolean;
+  searchText?: string;
+  setSearchText?: any;
 }
 
 const HeaderComponent: React.FC<ContainerProps> = ({
   name,
-  showBtn = true,
-  showSearchBar = true,
+  showBtn,
+  showSearchBar,
   searchText,
   setSearchText,
 }) => {

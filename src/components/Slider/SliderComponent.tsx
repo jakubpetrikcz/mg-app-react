@@ -52,10 +52,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                     title={item.title}
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                     router={"/tab1/" + item.id}
-                    voterRating={""}
                     isAddBtn={true}
-                    isRatingBtn={false}
-                    isRemoveBtn={false}
                   />
                 </SwiperSlide>
               );
@@ -67,10 +64,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                     title={item.title}
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                     router={"/tab1/" + item.id}
-                    voterRating={""}
                     isAddBtn={true}
-                    isRatingBtn={false}
-                    isRemoveBtn={false}
                   />
                 </SwiperSlide>
               );
