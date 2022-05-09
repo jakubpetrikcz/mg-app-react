@@ -29,56 +29,70 @@ const Tab2: React.FC = () => {
     filterData();
   }, [searchText, page]);
 
+  useEffect(() => {
+    setPage(1);
+  }, [searchText]);
+
   // useEffect(() => {
-  //   setPage(page + 1);
-  // }, []);
+  //   filterData();
+  // }, [page]);
 
   const segmentChanged = (ev: any) => {
     // setItem([]);
-    setPage(1);
+    // setPage(1);
     setSearchText(ev.target.value);
+    console.log(page);
     filterData();
   };
 
   const filterData = () => {
-    console.log(searchText);
-    console.log(page);
-    console.log("ahoj");
-
+    // console.log(searchText);
+    // console.log(page);
     if (searchText.length !== 0) {
-      getSearchList(page, searchText).then((r) => {
-        // this.popularList = this.popularList.concat(r.results);
-        if (page > 1) {
-          setItem([...item, ...r.results]);
-        } else {
-          console.log("ahoj");
-          setItem([...r.results]);
-        }
-        // setItem([...item, ...r.results]);
-      });
+      loadSearchContainer();
     } else {
-      getPopularList(page).then((r) => {
-        // this.popularList = this.popularList.concat(r.results);
-        // setItem(item.concat(r.results));
-        // setItem([...item, ...r.results]);
-        if (page > 1) {
-          setItem([...item, ...r.results]);
-        } else {
-          // console.log("ahoj");
-          setItem([...r.results]);
-        }
-        // setItem([...item, ...r.results]);
-        console.log(r.results);
-      });
+      getPopularMovies();
     }
+  };
+
+  const loadSearchContainer = () => {
+    // console.log(page);
+    getSearchList(page, searchText).then((r) => {
+      if (page > 1) {
+        setItem([...item, ...r.results]);
+        console.log("ahoj");
+      } else {
+        setItem([...r.results]);
+      }
+      // setItem([...item, ...r.results]);
+    });
+  };
+
+  const getPopularMovies = () => {
+    getPopularList(page).then((r) => {
+      if (page > 1) {
+        setItem([...item, ...r.results]);
+      } else {
+        // console.log("ahoj");
+        setItem([...r.results]);
+      }
+      // setItem([...item, ...r.results]);
+      // console.log(r.results);
+    });
   };
 
   const searchNext = (event: any) => {
     setPage(page + 1);
 
-    filterData();
+    // filterData();
+    if (searchText.length !== 0) {
+      loadSearchContainer();
+    } else {
+      getPopularMovies();
+    }
     console.log("Loaded data");
     event.target.complete();
+    // console.log(event.target.complete());
     // ($event.target as HTMLIonInfiniteScrollElement).complete();
   };
 
