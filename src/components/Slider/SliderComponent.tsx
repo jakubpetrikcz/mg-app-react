@@ -1,18 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonIcon,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonButton,
-  IonSearchbar,
-  IonCard,
-} from "@ionic/react";
+import { IonItem, IonLabel } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "./SliderComponent.scss";
@@ -53,6 +40,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                     router={"/tab1/" + item.id}
                     isAddBtn={true}
+                    item={item}
                   />
                 </SwiperSlide>
               );
@@ -65,6 +53,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                     router={"/tab1/" + item.id}
                     isAddBtn={true}
+                    item={item}
                   />
                 </SwiperSlide>
               );

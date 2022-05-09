@@ -7,7 +7,6 @@ import {
   IonList,
   IonPage,
   IonRow,
-  useIonViewWillEnter,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import HeaderComponent from "../components/Header/HeaderComponent";
@@ -32,10 +31,6 @@ const Tab2: React.FC = () => {
   useEffect(() => {
     setPage(1);
   }, [searchText]);
-
-  // useEffect(() => {
-  //   filterData();
-  // }, [page]);
 
   const segmentChanged = (ev: any) => {
     // setItem([]);
@@ -95,12 +90,6 @@ const Tab2: React.FC = () => {
     // console.log(event.target.complete());
     // ($event.target as HTMLIonInfiniteScrollElement).complete();
   };
-
-  // useIonViewWillEnter(() => {
-  //   filterData();
-  // });
-
-  // console.log("page", page);
 
   return (
     <IonPage>

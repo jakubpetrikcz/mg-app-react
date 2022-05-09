@@ -1,22 +1,13 @@
 import React from "react";
 import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
   IonIcon,
-  IonList,
-  IonItem,
-  IonLabel,
   IonButton,
-  IonSearchbar,
   IonCard,
   IonRouterLink,
   IonBadge,
 } from "@ionic/react";
 import "./MovieCardComponent.scss";
-import { add, bookmark, bookmarkSharp, star, trash } from "ionicons/icons";
+import { add, bookmark, trash } from "ionicons/icons";
 
 interface ContainerProps {
   title: string;
@@ -26,6 +17,10 @@ interface ContainerProps {
   isAddBtn?: boolean;
   isRatingBtn?: boolean;
   isRemoveBtn?: boolean;
+  item?: [];
+  removeFunction?: Function;
+  movies?: {};
+  index?: number;
 }
 
 const MovieCardComponent: React.FC<ContainerProps> = ({
@@ -36,11 +31,35 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   isAddBtn,
   isRatingBtn,
   isRemoveBtn,
+  item,
+  removeFunction,
+  movies,
+  index,
 }) => {
+  const getItems = (data: any) => {
+    const items: any[] = [];
+    if (JSON.parse(localStorage.getItem("items") || "[]") === null) {
+      items.push(data);
+      localStorage.setItem("items", JSON.stringify(items));
+    } else {
+      const localItems = JSON.parse(localStorage.getItem("items") || "[]");
+      localItems.map((details: any) => {
+        if (data.id !== details.id) {
+          if (items[data.title] === undefined) {
+            items[data.title] = data.title;
+          }
+          items.push(details);
+        }
+      });
+      items.push(data);
+      console.log(items);
+      localStorage.setItem("items", JSON.stringify(items));
+    }
+  };
   return (
     <IonCard className="no-margin">
       {isAddBtn ? (
-        <IonButton fill="clear">
+        <IonButton fill="clear" onClick={() => getItems(item)}>
           <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
           <IonIcon class="add" icon={add}></IonIcon>
         </IonButton>
@@ -52,7 +71,15 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
         </IonBadge>
       ) : null}
       {isRemoveBtn ? (
-        <IonButton fill="clear" className="remove-btn">
+        <IonButton
+          fill="clear"
+          className="remove-btn"
+          onClick={() => {
+            if (removeFunction) {
+              removeFunction(movies, index);
+            }
+          }}
+        >
           <IonIcon slot="icon-only" icon={trash}></IonIcon>
         </IonButton>
       ) : null}

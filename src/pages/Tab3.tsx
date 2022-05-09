@@ -2,29 +2,52 @@ import {
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
-  IonIcon,
   IonList,
   IonPage,
   IonRow,
-  IonTitle,
-  IonToolbar,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
-import ExploreContainer from "../components/ExploreContainer";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
-import { getPopularList } from "../services/ApiConnect";
 import "./Tab3.scss";
 
 const Tab3: React.FC = () => {
-  const [listPopular, setListPopular] = useState<any>([]);
+  const [listLocalStorage, setListLocalStorage] = useState<any>([]);
 
   useEffect(() => {
-    getPopularList(1).then((data) => {
-      setListPopular(data.results);
+    localStorage.setItem("items", JSON.stringify(listLocalStorage));
+  }, [listLocalStorage]);
+
+  useIonViewWillEnter(() => {
+    getData();
+  });
+
+  const getData = () => {
+    setListLocalStorage(JSON.parse(localStorage.getItem("items") || "[]"));
+  };
+
+  const removeItem = (e: any, i: number) => {
+    const items: any[] = [];
+    var array = [...listLocalStorage];
+    console.log(e);
+    // this.results = JSON.parse(localStorage.getItem('items'));
+    console.log("event", listLocalStorage);
+    JSON.parse(localStorage.getItem("items") || "[]").map((data: any) => {
+      if (data.id !== e.id) {
+        items.push(data);
+      } else {
+        array.splice(i, 1);
+        setListLocalStorage(array);
+      }
     });
-  }, []);
+    localStorage.setItem("items", JSON.stringify(items));
+
+    if (items.length === 0) {
+      localStorage.clear();
+    }
+  };
+
   return (
     <IonPage>
       <HeaderComponent name="Watchlist" />
@@ -33,7 +56,7 @@ const Tab3: React.FC = () => {
           <div>
             <IonGrid>
               <IonRow>
-                {listPopular.map((item: any, i: number) => {
+                {listLocalStorage.map((item: any, i: number) => {
                   return (
                     <IonCol
                       size-lg="2"
@@ -50,6 +73,9 @@ const Tab3: React.FC = () => {
                         isAddBtn={false}
                         isRatingBtn={false}
                         isRemoveBtn={true}
+                        removeFunction={removeItem}
+                        movies={item}
+                        index={i}
                       />
                     </IonCol>
                   );
