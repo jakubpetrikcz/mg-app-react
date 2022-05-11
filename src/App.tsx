@@ -1,4 +1,4 @@
-import { Redirect, Route, useParams } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -9,9 +9,6 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -33,13 +30,11 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.scss";
 import { useState } from "react";
 import { pages } from "./pages";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 setupIonicReact();
 
 const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<any>("tab0");
-  // const id = useParams();
 
   return (
     <IonApp>
@@ -47,28 +42,7 @@ const App: React.FC = () => {
         <IonTabs onIonTabsWillChange={(e) => setSelectedTab(e.detail.tab)}>
           <IonRouterOutlet>
             {pages.map((page, index) => {
-              // console.log(page.path);
               return (
-                // <Route
-                //   path={page.path}
-                //   key={index}
-                //   render={({ match }) => {
-                //     return (
-                //       <>
-                //         <Route
-                //           path={match.url}
-                //           component={page.component}
-                //           exact
-                //         />
-                //         <Route
-                //           path={`${match.url}/:id`}
-                //           component={MovieDetailsPage}
-                //         />
-                //       </>
-                //     );
-                //   }}
-                // />
-
                 <Route
                   path={page.path}
                   component={page.component}
@@ -81,24 +55,6 @@ const App: React.FC = () => {
             <Route exact path="/">
               <Redirect to={pages.filter((page) => page.redirect)[0].path} />
             </Route>
-
-            {/* <Route exact path="/">
-              <Redirect to="/tab1" />
-            </Route> */}
-            {/* {/* <Route
-              path="/tab1"
-              render={({ match: { url } }) => (
-                <>
-                  <Route path={`${url}/`} component={Tab1} exact />
-                  <Route path={`${url}/:id`} component={MovieDetailsPage} />
-                </>
-              )}
-            ></Route> */}
-            {/* <Route path="/tab1" component={Tab1} exact />
-            <Route path="/tab2" component={Tab2} exact />
-            <Route path="/tab3" component={Tab3} exact />
-            <Route path="/tab1/:id" component={MovieDetailsPage} exact />
-            <Route path="/tab2/:id" component={MovieDetailsPage} exact /> */}
           </IonRouterOutlet>
           <IonTabBar
             style={{

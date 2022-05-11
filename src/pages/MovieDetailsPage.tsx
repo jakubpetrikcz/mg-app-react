@@ -20,37 +20,24 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { add, bookmark } from "ionicons/icons";
-import { useCallback, useEffect, useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { getCreditsList, getMovieDetailList } from "../services/ApiConnect";
 import "./MovieDetailsPage.scss";
 
 const MovieDetailsPage: React.FC = () => {
-  //   const params = useParams<{ id: string }>();
-  //   const { id } = sumParams();
-  //   console.log(id);
-  // let location = useLocation();
-  // const id = location.pathname.toString().split("/")[2];
-
   const [item, setItem] = useState<any>([]);
   const [credits, setCredits] = useState<any>([]);
   const { id }: { id: string } = useParams();
 
-  // useEffect(() => {
-  //   const forms = JSON.parse(localStorage.getItem("user"));
-  // }, []);
-
   useEffect(() => {
-    // console.log(id);
     getMovieDetailList(id).then((data) => {
       setItem(data);
-      // console.log(data);
     });
     getCreditsList(id).then((data) => {
       setCredits(data);
-      // console.log(data);
     });
-  }, []);
+  }, [id]);
 
   const calcTime = (time: any) => {
     const hours = Math.floor(time / 60);
@@ -60,23 +47,26 @@ const MovieDetailsPage: React.FC = () => {
 
   const runTime = calcTime(item.runtime);
 
-  // credits.crew?.filter((member: any) => {
-  //   if (member.job === "Director") {
-  //     const directorName = member.name;
-  //     const directorImage =
-  //       "https://www.themoviedb.org/t/p/w138_and_h175_face/" +
-  //       member.profile_path;
-  //     console.log(directorName);
-  //     console.log(directorImage);
-  //   }
-  // });
-
-  // console.log(item.genres);
-  // console.log(item.backdrop_path);
-
-  // item.genres?.map((item: any) => {
-  //   console.log(item.name);
-  // });
+  const getItems = (data: any) => {
+    const items: any[] = [];
+    if (JSON.parse(localStorage.getItem("items") || "[]") === null) {
+      items.push(data);
+      localStorage.setItem("items", JSON.stringify(items));
+    } else {
+      const localItems = JSON.parse(localStorage.getItem("items") || "[]");
+      localItems.map((details: any) => {
+        if (data.id !== details.id) {
+          if (items[data.title] === undefined) {
+            items[data.title] = data.title;
+          }
+          items.push(details);
+        }
+      });
+      items.push(data);
+      console.log(items);
+      localStorage.setItem("items", JSON.stringify(items));
+    }
+  };
 
   return (
     <IonPage>
@@ -95,7 +85,7 @@ const MovieDetailsPage: React.FC = () => {
       <IonContent>
         <div className="main-content">
           <div className="images-content">
-            <IonButton slot="end" fill="clear">
+            <IonButton slot="end" fill="clear" onClick={() => getItems(item)}>
               <IonIcon
                 slot="icon-only"
                 className="bookmark"
@@ -163,7 +153,7 @@ const MovieDetailsPage: React.FC = () => {
                   return (
                     <IonItem key={i}>
                       <IonAvatar slot="start">
-                        <img src={directorImage} />
+                        <img src={directorImage} alt="director" />
                       </IonAvatar>
                       <IonLabel>
                         <h2>{directorName}</h2>
@@ -188,7 +178,7 @@ const MovieDetailsPage: React.FC = () => {
                 return (
                   <IonItem key={i}>
                     <IonAvatar slot="start">
-                      <img src={member.profile_path} />
+                      <img src={member.profile_path} alt="member"/>
                     </IonAvatar>
                     <IonLabel>
                       <h2>{member.name}</h2>

@@ -31,7 +31,6 @@ const Tab3: React.FC = () => {
     const items: any[] = [];
     var array = [...listLocalStorage];
     console.log(e);
-    // this.results = JSON.parse(localStorage.getItem('items'));
     console.log("event", listLocalStorage);
     JSON.parse(localStorage.getItem("items") || "[]").map((data: any) => {
       if (data.id !== e.id) {
@@ -69,9 +68,6 @@ const Tab3: React.FC = () => {
                         title={item.title}
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                         router={item.id}
-                        voterRating={""}
-                        isAddBtn={false}
-                        isRatingBtn={false}
                         isRemoveBtn={true}
                         removeFunction={removeItem}
                         movies={item}

@@ -23,7 +23,6 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
       setListTop(data.results);
     });
   }, []);
-  //console.log(listItems);
 
   return (
     <>

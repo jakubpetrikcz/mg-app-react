@@ -16,12 +16,8 @@ import { getPopularList, getSearchList } from "../services/ApiConnect";
 import "./Tab2.scss";
 
 const Tab2: React.FC = () => {
-  // const [listPopular, setListPopular] = useState<any>([]);
-
   const [searchText, setSearchText] = useState("");
   const [item, setItem] = useState<any>([]);
-
-  // const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -33,16 +29,12 @@ const Tab2: React.FC = () => {
   }, [searchText]);
 
   const segmentChanged = (ev: any) => {
-    // setItem([]);
-    // setPage(1);
     setSearchText(ev.target.value);
     console.log(page);
     filterData();
   };
 
   const filterData = () => {
-    // console.log(searchText);
-    // console.log(page);
     if (searchText.length !== 0) {
       loadSearchContainer();
     } else {
@@ -51,7 +43,6 @@ const Tab2: React.FC = () => {
   };
 
   const loadSearchContainer = () => {
-    // console.log(page);
     getSearchList(page, searchText).then((r) => {
       if (page > 1) {
         setItem([...item, ...r.results]);
@@ -59,7 +50,6 @@ const Tab2: React.FC = () => {
       } else {
         setItem([...r.results]);
       }
-      // setItem([...item, ...r.results]);
     });
   };
 
@@ -68,18 +58,14 @@ const Tab2: React.FC = () => {
       if (page > 1) {
         setItem([...item, ...r.results]);
       } else {
-        // console.log("ahoj");
         setItem([...r.results]);
       }
-      // setItem([...item, ...r.results]);
-      // console.log(r.results);
     });
   };
 
   const searchNext = (event: any) => {
     setPage(page + 1);
 
-    // filterData();
     if (searchText.length !== 0) {
       loadSearchContainer();
     } else {
@@ -87,8 +73,6 @@ const Tab2: React.FC = () => {
     }
     console.log("Loaded data");
     event.target.complete();
-    // console.log(event.target.complete());
-    // ($event.target as HTMLIonInfiniteScrollElement).complete();
   };
 
   return (
@@ -118,9 +102,7 @@ const Tab2: React.FC = () => {
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
                         router={"/tab2/" + item.id}
                         voterRating={item.vote_average}
-                        isAddBtn={false}
                         isRatingBtn={true}
-                        isRemoveBtn={false}
                       />
                     </IonCol>
                   );
