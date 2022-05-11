@@ -1,16 +1,11 @@
 import {
   bookmark,
   bookmarkOutline,
-  ellipse,
   home,
   homeOutline,
-  homeSharp,
   search,
   searchOutline,
-  square,
-  triangle,
 } from "ionicons/icons";
-import { withRouter } from "react-router-dom";
 import MovieDetailsPage from "./MovieDetailsPage";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
@@ -38,9 +33,19 @@ export const pages = [
     component: Tab3,
     redirect: false,
   },
-  // {
-  //   path: "/tab1/:id",
-  //   component: MovieDetailsPage,
-  //   redirect: false,
-  // },
+  {
+    path: "/tab1/:id",
+    component: MovieDetailsPage,
+    redirect: false,
+  },
+  {
+    path: "/tab2/:id",
+    component: MovieDetailsPage,
+    redirect: false,
+  },
+  {
+    path: "/tab3/:id",
+    component: MovieDetailsPage,
+    redirect: false,
+  },
 ];

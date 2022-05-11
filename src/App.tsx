@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useParams } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -39,36 +39,45 @@ setupIonicReact();
 
 const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<any>("tab0");
+  // const id = useParams();
 
   return (
     <IonApp>
       <IonReactRouter>
         <IonTabs onIonTabsWillChange={(e) => setSelectedTab(e.detail.tab)}>
           <IonRouterOutlet>
-            {/* {pages.map((page, index) => {
-              console.log(page.redirect);
+            {pages.map((page, index) => {
+              // console.log(page.path);
               return (
                 // <Route
                 //   path={page.path}
                 //   key={index}
-                //   render={({ match: { url } }) => (
-                //     <>
-                //       <Route
-                //         path={`${url}/`}
-                //         component={page.component}
-                //         exact
-                //       />
-                //       <Route path={`${url}/:id`} component={MovieDetailsPage} />
-                //     </>
-                //   )}
+                //   render={({ match }) => {
+                //     return (
+                //       <>
+                //         <Route
+                //           path={match.url}
+                //           component={page.component}
+                //           exact
+                //         />
+                //         <Route
+                //           path={`${match.url}/:id`}
+                //           component={MovieDetailsPage}
+                //         />
+                //       </>
+                //     );
+                //   }}
                 // />
+
                 <Route
                   path={page.path}
                   component={page.component}
                   key={index}
+                  exact
                 />
               );
-            })} */}
+            })}
+
             <Route exact path="/">
               <Redirect to={pages.filter((page) => page.redirect)[0].path} />
             </Route>
@@ -85,11 +94,11 @@ const App: React.FC = () => {
                 </>
               )}
             ></Route> */}
-            <Route path="/tab1" component={Tab1} exact />
+            {/* <Route path="/tab1" component={Tab1} exact />
             <Route path="/tab2" component={Tab2} exact />
             <Route path="/tab3" component={Tab3} exact />
             <Route path="/tab1/:id" component={MovieDetailsPage} exact />
-            <Route path="/tab2/:id" component={MovieDetailsPage} exact />
+            <Route path="/tab2/:id" component={MovieDetailsPage} exact /> */}
           </IonRouterOutlet>
           <IonTabBar
             style={{
