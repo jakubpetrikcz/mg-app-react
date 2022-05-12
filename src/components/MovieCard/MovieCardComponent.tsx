@@ -7,7 +7,8 @@ import {
   IonBadge,
 } from "@ionic/react";
 import "./MovieCardComponent.scss";
-import { add, bookmark, trash } from "ionicons/icons";
+import { closeOutline, trash } from "ionicons/icons";
+import ButtonAddComponent from "../ButtonAdd/ButtonAddComponent";
 
 interface ContainerProps {
   title: string;
@@ -17,10 +18,12 @@ interface ContainerProps {
   isAddBtn?: boolean;
   isRatingBtn?: boolean;
   isRemoveBtn?: boolean;
+  isCloseBtn?: boolean;
   item?: [];
   removeFunction?: Function;
   movies?: {};
   index?: number;
+  setState?: any;
 }
 
 const MovieCardComponent: React.FC<ContainerProps> = ({
@@ -31,10 +34,12 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   isAddBtn,
   isRatingBtn,
   isRemoveBtn,
+  isCloseBtn,
   item,
   removeFunction,
   movies,
   index,
+  setState,
 }) => {
   const getItems = (data: any) => {
     const items: any[] = [];
@@ -59,11 +64,12 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   return (
     <IonCard className="no-margin">
       {isAddBtn ? (
-        <IonButton fill="clear" onClick={() => getItems(item)}>
-          <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
-          <IonIcon class="add" icon={add}></IonIcon>
-        </IonButton>
-      ) : null}
+        <ButtonAddComponent getItems={() => getItems(item)} />
+      ) : // <IonButton fill="clear" onClick={() => getItems(item)}>
+      //   <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
+      //   <IonIcon class="add" icon={add}></IonIcon>
+      // </IonButton>
+      null}
       {isRatingBtn ? (
         <IonBadge class="movie-badge">
           <span>{voterRating}</span>
@@ -81,6 +87,11 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
           }}
         >
           <IonIcon slot="icon-only" icon={trash}></IonIcon>
+        </IonButton>
+      ) : null}
+      {isCloseBtn ? (
+        <IonButton className="close-modal-btn" onClick={setState}>
+          <IonIcon icon={closeOutline}></IonIcon>
         </IonButton>
       ) : null}
       <IonRouterLink routerLink={router}>

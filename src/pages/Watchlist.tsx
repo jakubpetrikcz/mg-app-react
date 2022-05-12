@@ -7,17 +7,13 @@ import {
   IonRow,
   useIonViewWillEnter,
 } from "@ionic/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
-import "./Tab3.scss";
+import "./Watchlist.scss";
 
-const Tab3: React.FC = () => {
+const Watchlist: React.FC = () => {
   const [listLocalStorage, setListLocalStorage] = useState<any>([]);
-
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(listLocalStorage));
-  }, [listLocalStorage]);
 
   useIonViewWillEnter(() => {
     getData();
@@ -41,7 +37,7 @@ const Tab3: React.FC = () => {
       }
     });
     localStorage.setItem("items", JSON.stringify(items));
-
+    // console.log("items", items);
     if (items.length === 0) {
       localStorage.clear();
     }
@@ -85,4 +81,4 @@ const Tab3: React.FC = () => {
   );
 };
 
-export default Tab3;
+export default Watchlist;

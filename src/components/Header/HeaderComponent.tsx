@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import {
   IonContent,
   IonHeader,
-  IonIcon,
   IonList,
   IonItem,
   IonLabel,
   IonButton,
   IonSearchbar,
   IonModal,
-  IonCard,
-  IonRouterLink,
 } from "@ionic/react";
 import "./HeaderComponent.scss";
 import { getDiscoverList } from "../../services/ApiConnect";
-import { closeOutline } from "ionicons/icons";
+import MovieCardComponent from "../MovieCard/MovieCardComponent";
 
 interface ContainerProps {
   name: string;
@@ -74,20 +71,13 @@ const HeaderComponent: React.FC<ContainerProps> = ({
               <IonContent>
                 <div className="modal-content">
                   <div className="modal-card">
-                    <IonButton
-                      className="close-modal-btn"
-                      onClick={() => setShowModal(false)}
-                    >
-                      <IonIcon icon={closeOutline}></IonIcon>
-                    </IonButton>
-                    <IonCard button>
-                      <IonRouterLink routerLink={"/tab1/" + modalMovie.id}>
-                        <img
-                          src={`http://image.tmdb.org/t/p/original/${modalMovie.poster_path}`}
-                        />
-                        <h4>{modalMovie.title}</h4>
-                      </IonRouterLink>
-                    </IonCard>
+                    <MovieCardComponent
+                      title={modalMovie.title}
+                      imgSrc={`http://image.tmdb.org/t/p/original/${modalMovie.poster_path}`}
+                      router={"/tab1/" + modalMovie.id}
+                      isCloseBtn={true}
+                      setState={() => setShowModal(false)}
+                    />
                   </div>
                 </div>
               </IonContent>

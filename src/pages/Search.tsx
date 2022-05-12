@@ -13,9 +13,9 @@ import HeaderComponent from "../components/Header/HeaderComponent";
 // import InfiniteScrollComponent from "../components/InfiniteScroll/InfiniteScrollComponent";
 import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
 import { getPopularList, getSearchList } from "../services/ApiConnect";
-import "./Tab2.scss";
+import "./Search.scss";
 
-const Tab2: React.FC = () => {
+const Search: React.FC = () => {
   const [searchText, setSearchText] = useState("");
   const [item, setItem] = useState<any>([]);
   const [page, setPage] = useState(1);
@@ -122,4 +122,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default Search;

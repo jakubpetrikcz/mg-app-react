@@ -1,9 +1,9 @@
 import { IonContent, IonPage } from "@ionic/react";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import SliderComponent from "../components/Slider/SliderComponent";
-import "./Tab1.scss";
+import "./Home.scss";
 
-const Tab1: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <IonPage>
       <HeaderComponent name="Movie Generator" showBtn={true} />
@@ -15,4 +15,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default Home;

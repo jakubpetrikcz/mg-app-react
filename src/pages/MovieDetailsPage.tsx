@@ -4,10 +4,8 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonIcon,
   IonButtons,
   IonBackButton,
-  IonButton,
   IonImg,
   IonBadge,
   IonRow,
@@ -15,13 +13,12 @@ import {
   IonChip,
   IonListHeader,
   IonList,
-  IonItem,
-  IonAvatar,
-  IonLabel,
 } from "@ionic/react";
-import { add, bookmark } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import ActorsComponent from "../components/Actors/ActorsComponent";
+import ButtonAddComponent from "../components/ButtonAdd/ButtonAddComponent";
+import DirectorsComponent from "../components/Directors/DirectorsComponents";
 import { getCreditsList, getMovieDetailList } from "../services/ApiConnect";
 import "./MovieDetailsPage.scss";
 
@@ -85,14 +82,7 @@ const MovieDetailsPage: React.FC = () => {
       <IonContent>
         <div className="main-content">
           <div className="images-content">
-            <IonButton slot="end" fill="clear" onClick={() => getItems(item)}>
-              <IonIcon
-                slot="icon-only"
-                className="bookmark"
-                icon={bookmark}
-              ></IonIcon>
-              <IonIcon className="add" icon={add}></IonIcon>
-            </IonButton>
+            <ButtonAddComponent getItems={() => getItems(item)} />
             {item.backdrop_path ? (
               <IonImg
                 src={"http://image.tmdb.org/t/p/original/" + item.backdrop_path}
@@ -149,16 +139,12 @@ const MovieDetailsPage: React.FC = () => {
                   const directorImage =
                     "https://www.themoviedb.org/t/p/w138_and_h175_face/" +
                     member.profile_path;
-                  // console.log(member);
                   return (
-                    <IonItem key={i}>
-                      <IonAvatar slot="start">
-                        <img src={directorImage} alt="director" />
-                      </IonAvatar>
-                      <IonLabel>
-                        <h2>{directorName}</h2>
-                      </IonLabel>
-                    </IonItem>
+                    <DirectorsComponent
+                      key={i}
+                      profile_path={directorImage}
+                      name={directorName}
+                    />
                   );
                 }
               })}
@@ -176,15 +162,12 @@ const MovieDetailsPage: React.FC = () => {
                     member.profile_path;
                 }
                 return (
-                  <IonItem key={i}>
-                    <IonAvatar slot="start">
-                      <img src={member.profile_path} alt="member"/>
-                    </IonAvatar>
-                    <IonLabel>
-                      <h2>{member.name}</h2>
-                      <h4>{member.character}</h4>
-                    </IonLabel>
-                  </IonItem>
+                  <ActorsComponent
+                    key={i}
+                    profile_path={member.profile_path}
+                    name={member.name}
+                    character={member.character}
+                  />
                 );
               })}
             </IonList>

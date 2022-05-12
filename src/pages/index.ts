@@ -7,44 +7,44 @@ import {
   searchOutline,
 } from "ionicons/icons";
 import MovieDetailsPage from "./MovieDetailsPage";
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
+import Home from "./Home";
+import Search from "./Search";
+import Watchlist from "./Watchlist";
 
 export const pages = [
   {
-    path: "/tab1",
+    path: "/home",
     icon: homeOutline,
     selectedIcon: home,
-    component: Tab1,
+    component: Home,
     redirect: true,
   },
   {
-    path: "/tab2",
+    path: "/search",
     icon: searchOutline,
     selectedIcon: search,
-    component: Tab2,
+    component: Search,
     redirect: false,
   },
   {
-    path: "/tab3",
+    path: "/watchlist",
     icon: bookmarkOutline,
     selectedIcon: bookmark,
-    component: Tab3,
+    component: Watchlist,
     redirect: false,
   },
   {
-    path: "/tab1/:id",
+    path: "/home/:id",
     component: MovieDetailsPage,
     redirect: false,
   },
   {
-    path: "/tab2/:id",
+    path: "/search/:id",
     component: MovieDetailsPage,
     redirect: false,
   },
   {
-    path: "/tab3/:id",
+    path: "/watchlist/:id",
     component: MovieDetailsPage,
     redirect: false,
   },
