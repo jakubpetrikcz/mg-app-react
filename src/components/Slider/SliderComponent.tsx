@@ -27,7 +27,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
   return (
     <>
       <IonItem lines="none">
-        <IonLabel>{title}</IonLabel>
+        <IonLabel className="title">{title}</IonLabel>
       </IonItem>
       <Swiper slidesPerView={2} loop={true}>
         {isTrend

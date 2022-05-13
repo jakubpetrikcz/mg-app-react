@@ -11,17 +11,8 @@
   box-sizing: border-box;
 }
 
-// .swiper-slide {
-//   transition: 400ms all ease-in-out;
-//   position: relative;
-// }
-
-// .swiper-slide-active {
-//   transform: scale(1.05, 1.05);
-
-//   ion-card {
-//     img {
-//       transform: scale(1, 1);
-//     }
-//   }
-// }
+.item .title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--ion-color-dark);
+}
