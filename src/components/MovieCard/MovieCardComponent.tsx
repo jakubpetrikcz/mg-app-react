@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import {
   IonIcon,
   IonButton,
@@ -20,9 +20,7 @@ interface ContainerProps {
   isRemoveBtn?: boolean;
   isCloseBtn?: boolean;
   item?: [];
-  removeFunction?: Function;
-  movies?: {};
-  index?: number;
+  removeFunction?: MouseEventHandler;
   setState?: any;
 }
 
@@ -37,8 +35,6 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
   isCloseBtn,
   item,
   removeFunction,
-  movies,
-  index,
   setState,
 }) => {
   const getItems = (data: any) => {
@@ -57,19 +53,12 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
         }
       });
       items.push(data);
-      console.log(items);
       localStorage.setItem("items", JSON.stringify(items));
     }
   };
   return (
     <IonCard className="no-margin">
-      {isAddBtn ? (
-        <ButtonAddComponent getItems={() => getItems(item)} />
-      ) : // <IonButton fill="clear" onClick={() => getItems(item)}>
-      //   <IonIcon slot="icon-only" class="bookmark" icon={bookmark}></IonIcon>
-      //   <IonIcon class="add" icon={add}></IonIcon>
-      // </IonButton>
-      null}
+      {isAddBtn ? <ButtonAddComponent getItems={() => getItems(item)} /> : null}
       {isRatingBtn ? (
         <IonBadge class="movie-badge">
           <span>{voterRating}</span>
@@ -77,15 +66,7 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
         </IonBadge>
       ) : null}
       {isRemoveBtn ? (
-        <IonButton
-          fill="clear"
-          className="remove-btn"
-          onClick={() => {
-            if (removeFunction) {
-              removeFunction(movies, index);
-            }
-          }}
-        >
+        <IonButton fill="clear" className="remove-btn" onClick={removeFunction}>
           <IonIcon slot="icon-only" icon={trash}></IonIcon>
         </IonButton>
       ) : null}

@@ -6,7 +6,6 @@ export const getTrendingList = () => {
   return axios
     .get(`${apiUrl}/trending/movie/day?api_key=${apiKey}&language=en-US`)
     .then((response) => {
-      // console.log(response);
       return response.data;
     });
 };

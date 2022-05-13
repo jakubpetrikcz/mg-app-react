@@ -37,7 +37,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                   <MovieCardComponent
                     title={item.title}
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
-                    router={"/tab1/" + item.id}
+                    router={"/home/" + item.id}
                     isAddBtn={true}
                     item={item}
                   />
@@ -50,7 +50,7 @@ const SliderComponent: React.FC<ContainerProps> = ({ title, isTrend }) => {
                   <MovieCardComponent
                     title={item.title}
                     imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
-                    router={"/tab1/" + item.id}
+                    router={"/home/" + item.id}
                     isAddBtn={true}
                     item={item}
                   />

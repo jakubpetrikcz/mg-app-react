@@ -26,8 +26,6 @@ const Watchlist: React.FC = () => {
   const removeItem = (e: any, i: number) => {
     const items: any[] = [];
     var array = [...listLocalStorage];
-    console.log(e);
-    console.log("event", listLocalStorage);
     JSON.parse(localStorage.getItem("items") || "[]").map((data: any) => {
       if (data.id !== e.id) {
         items.push(data);
@@ -37,7 +35,6 @@ const Watchlist: React.FC = () => {
       }
     });
     localStorage.setItem("items", JSON.stringify(items));
-    // console.log("items", items);
     if (items.length === 0) {
       localStorage.clear();
     }
@@ -48,33 +45,37 @@ const Watchlist: React.FC = () => {
       <HeaderComponent name="Watchlist" />
       <IonContent fullscreen>
         <IonList>
-          <div>
-            <IonGrid>
-              <IonRow>
-                {listLocalStorage.map((item: any, i: number) => {
-                  return (
-                    <IonCol
-                      size-lg="2"
-                      size-md="4"
-                      size-sm="6"
-                      size-xs="6"
-                      key={i}
-                    >
-                      <MovieCardComponent
-                        title={item.title}
-                        imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
-                        router={item.id}
-                        isRemoveBtn={true}
-                        removeFunction={removeItem}
-                        movies={item}
-                        index={i}
-                      />
-                    </IonCol>
-                  );
-                })}
-              </IonRow>
-            </IonGrid>
-          </div>
+          {listLocalStorage.length !== 0 ? (
+            <div>
+              <IonGrid>
+                <IonRow>
+                  {listLocalStorage.map((item: any, i: number) => {
+                    return (
+                      <IonCol
+                        size-lg="2"
+                        size-md="4"
+                        size-sm="6"
+                        size-xs="6"
+                        key={i}
+                      >
+                        <MovieCardComponent
+                          title={item.title}
+                          imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                          router={"/watchlist/" + item.id}
+                          isRemoveBtn={true}
+                          removeFunction={() => removeItem(item, i)}
+                        />
+                      </IonCol>
+                    );
+                  })}
+                </IonRow>
+              </IonGrid>
+            </div>
+          ) : (
+            <div className="ion-text-center">
+              <h2>Watchlist is empty!</h2>
+            </div>
+          )}
         </IonList>
       </IonContent>
     </IonPage>
