@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import { IonButton } from "@ionic/react";
+import "./ButtonGenerateComponent.scss";
 
 interface ContainerProps {
   getRandomMovie: MouseEventHandler;

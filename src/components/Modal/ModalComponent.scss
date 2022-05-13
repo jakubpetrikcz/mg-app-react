@@ -1,0 +1,44 @@
+.modal {
+  --background: transparent;
+  --box-shadow: none;
+
+  ion-content {
+    --background: transparent;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .modal-content {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(25%);
+  }
+
+  .modal-card {
+    max-width: 274px;
+    position: relative;
+    overflow: visible;
+
+    ion-card {
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      overflow: visible;
+      border: 5px solid #ffffff;
+      background: #fff;
+    }
+
+    h4 {
+      margin: 0.5rem;
+      margin-top: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #495057;
+    }
+  }
+}

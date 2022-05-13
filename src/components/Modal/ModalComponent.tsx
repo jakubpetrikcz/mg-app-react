@@ -1,5 +1,6 @@
 import { IonContent, IonModal } from "@ionic/react";
 import MovieCardComponent from "../MovieCard/MovieCardComponent";
+import "./ModalComponent.scss";
 
 interface ContainerProps {
   //   getRandomMovie: MouseEventHandler;
