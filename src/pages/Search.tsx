@@ -100,7 +100,7 @@ const Search: React.FC = () => {
                       <MovieCardComponent
                         title={item.title}
                         imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
-                        router={"/tab2/" + item.id}
+                        router={"/search/" + item.id}
                         voterRating={item.vote_average}
                         isRatingBtn={true}
                       />
