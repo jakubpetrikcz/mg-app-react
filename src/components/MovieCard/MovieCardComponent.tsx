@@ -76,7 +76,7 @@ const MovieCardComponent: React.FC<ContainerProps> = ({
         </IonButton>
       ) : null}
       <IonRouterLink routerLink={router}>
-        <img src={imgSrc} alt="avatar" />
+        <img width={180} height={290} src={imgSrc} alt="avatar" />
         <h4>{title}</h4>
       </IonRouterLink>
     </IonCard>

@@ -60,7 +60,7 @@ const Watchlist: React.FC = () => {
                       >
                         <MovieCardComponent
                           title={item.title}
-                          imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                          imgSrc={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                           router={"/watchlist/" + item.id}
                           isRemoveBtn={true}
                           removeFunction={() => removeItem(item, i)}

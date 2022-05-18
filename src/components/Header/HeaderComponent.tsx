@@ -55,7 +55,7 @@ const HeaderComponent: React.FC<ContainerProps> = ({
               setShowModal={() => setShowModal(false)}
               showModal={showModal}
               title={modalMovie.title}
-              poster_path={`http://image.tmdb.org/t/p/original/${modalMovie.poster_path}`}
+              poster_path={`https://image.tmdb.org/t/p/w500/${modalMovie.poster_path}`}
               id={"/home/" + modalMovie.id}
             />
           </>

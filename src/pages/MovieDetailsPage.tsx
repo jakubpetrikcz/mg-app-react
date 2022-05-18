@@ -85,7 +85,7 @@ const MovieDetailsPage: React.FC = () => {
             <ButtonAddComponent getItems={() => getItems(item)} />
             {item.backdrop_path ? (
               <IonImg
-                src={"http://image.tmdb.org/t/p/original/" + item.backdrop_path}
+                src={"https://image.tmdb.org/t/p/w500/" + item.backdrop_path}
               />
             ) : null}
             <IonBadge className="badge">

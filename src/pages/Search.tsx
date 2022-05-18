@@ -10,7 +10,6 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import HeaderComponent from "../components/Header/HeaderComponent";
-// import InfiniteScrollComponent from "../components/InfiniteScroll/InfiniteScrollComponent";
 import MovieCardComponent from "../components/MovieCard/MovieCardComponent";
 import { getPopularList, getSearchList } from "../services/ApiConnect";
 import "./Search.scss";
@@ -30,7 +29,6 @@ const Search: React.FC = () => {
 
   const segmentChanged = (ev: any) => {
     setSearchText(ev.target.value);
-    console.log(page);
     filterData();
   };
 
@@ -46,7 +44,6 @@ const Search: React.FC = () => {
     getSearchList(page, searchText).then((r) => {
       if (page > 1) {
         setItem([...item, ...r.results]);
-        console.log("ahoj");
       } else {
         setItem([...r.results]);
       }
@@ -71,7 +68,6 @@ const Search: React.FC = () => {
     } else {
       getPopularMovies();
     }
-    console.log("Loaded data");
     event.target.complete();
   };
 
@@ -99,7 +95,7 @@ const Search: React.FC = () => {
                     >
                       <MovieCardComponent
                         title={item.title}
-                        imgSrc={`http://image.tmdb.org/t/p/original/${item.poster_path}`}
+                        imgSrc={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                         router={"/search/" + item.id}
                         voterRating={item.vote_average}
                         isRatingBtn={true}

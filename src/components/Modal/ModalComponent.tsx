@@ -3,7 +3,6 @@ import MovieCardComponent from "../MovieCard/MovieCardComponent";
 import "./ModalComponent.scss";
 
 interface ContainerProps {
-  //   getRandomMovie: MouseEventHandler;
   setShowModal: any;
   showModal: any;
   title: string;
